@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Подробности</title>
+</head>
+<body>
+
+<div align="center" th:each="el : ${groups}">
+    <h1>Подробная информация групп</h1>
+    <h4 th:text="'Название: '+${el.groups}"></h4>
+    <h5><a th:href="'/groups/'+${el.id}+'/edit'">Редактировать</a></h5>
+    <form th:action="'/groups/' + ${el.id} + '/remove'" method="post">
+        <button type="submit">Удалить</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+    html *
+    {
+        font-family: Arial !important;
+    }
+    body {
+        height: 200px;
+        background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+    }
+    h1{
+        font-family: Arial;
+    }
+</style>

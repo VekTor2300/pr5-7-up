@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Редактирование колледжа</title>
+</head>
+<body>
+
+<div align="center" th:each="el : ${college}">
+    <h1>Редактирование колледжа</h1>
+    <form method="post" th:object="${college}">
+        <input th:field="*{titlecollege}" style="width: 250px; height: 40px; display: list-item" type="text" th:value="${college.titlecollege}" name="groups" placeholder="Введите название колледжа">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('titlecollege')}" th:errors="*{titlecollege}"></div><br>
+        <input th:field="*{numTel}" style="width: 250px; height: 40px; display: list-item" type="tel" th:value="${college.numTel}" name="groups" placeholder="Введите номер группы">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('numTel')}" th:errors="*{numTel}"></div><br>
+        <div>
+            <label>Адрес</label>
+            <div style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+            <select th:field="*{address}" name="address">
+                <option th:each="address : ${addressess}"
+                        th:if="${(college.address != null && address.id == college.address.id) || address.college==null}"
+                        th:value="${address.id}"
+                        th:text="${address.adress}">
+                </option>
+            </select>
+        </div>
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+    html *
+    {
+        font-family: Arial !important;
+    }
+    body {
+        height: 200px;
+        background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+    }
+    h1{
+        font-family: Arial;
+    }
+</style>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Подробности</title>
+</head>
+<body>
+
+<div align="center" th:each="el : ${post}">
+  <h1>Подробная информация статьи</h1>
+    <h3 th:text="'Название: '+${el.title}"></h3>
+    <h4 th:text="'Анонс: '+${el.anons}"></h4>
+    <h5 th:text="'Текст: '+${el.full_text}"></h5>
+    <h5><a th:href="'/blog/'+${el.id}+'/edit'">Редактировать</a></h5>
+  <form th:action="'/blog/' + ${el.id} + '/remove'" method="post">
+    <button type="submit">Удалить</button>
+  </form>
+</div>
+
+</body>
+</html>
+<style>
+    html *
+    {
+        font-family: Arial !important;
+    }
+    body {
+        height: 200px;
+        background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+    }
+    h1{
+        font-family: Arial;
+    }
+</style>

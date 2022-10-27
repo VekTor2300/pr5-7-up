@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Редактирование студента</title>
+</head>
+<body>
+
+<div align="center" th:each="el : ${student}">
+    <h1>Редактирование студента</h1>
+    <form method="post" th:object="${student}">
+        <input th:field="*{surname}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="text" th:value="${student.getSurname()}" name="surname" placeholder="Напишите фамилию"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('surname')}" th:errors="*{surname}"></div><br>
+        <input th:field="*{name}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="text" th:value="${student.getName()}" name="name" placeholder="Напишите имя"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+        <input th:field="*{scholarship}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="text" th:value="${student.getScholarship()}" name="Scholarship" placeholder="Напишите стипендию"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('scholarship')}" th:errors="*{scholarship}"></div><br>
+        <input th:field="*{birthday}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="date" th:value="${student.getBirthday()}" name="Birthday"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('birthday')}" th:errors="*{birthday}"></div><br>
+        <div>
+            <label>Выберите группу</label>
+            <select name="groups_id">
+                <div th:each="r : ${groupses}">
+                    <option  th:value="${r.id}" th:text="${r.groups}" >
+                    </option>
+                </div>
+            </select>
+        </div>
+        <div>
+            <label>Выберите колледж</label>
+            <select name="colleges_id" multiple>
+                <div th:each="r : ${collleges}">
+                    <option  th:value="${r.id}" th:text="${r.titlecollege}" >
+                    </option>
+                </div>
+            </select>
+        </div>
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+    html *
+    {
+        font-family: Arial !important;
+    }
+    body {
+        height: 200px;
+        background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+    }
+    h1{
+        font-family: Arial;
+    }
+</style>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Редактирование адреса</title>
+</head>
+<body>
+
+<div align="center" th:each="el : ${address}">
+    <h1>Редактирование адреса</h1>
+    <form method="post" th:object="${address}">
+        <input th:field="*{adress}" style="width: 250px; height: 40px; display: list-item" type="text" th:value="${address.adress}" name="adress" placeholder="Введите адрес">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('adress')}" th:errors="*{adress}"></div><br>
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+    html *
+    {
+        font-family: Arial !important;
+    }
+    body {
+        height: 200px;
+        background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+    }
+    h1{
+        font-family: Arial;
+    }
+</style>

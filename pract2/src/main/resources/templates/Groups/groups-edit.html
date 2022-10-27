@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Редактирование группы</title>
+</head>
+<body>
+
+<div align="center" th:each="el : ${groups}">
+    <h1>Редактирование группы</h1>
+    <form method="post" th:object="${groups}">
+        <input th:field="*{groups}" style="width: 250px; height: 40px; display: list-item" type="number" th:value="${groups.groups}" name="groups" placeholder="Введите номер группы">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('groups')}" th:errors="*{groups}"></div><br>
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+    html *
+    {
+        font-family: Arial !important;
+    }
+    body {
+        height: 200px;
+        background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+    }
+    h1{
+        font-family: Arial;
+    }
+</style>

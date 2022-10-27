@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Редактирование преподавателя</title>
+</head>
+<body>
+
+<div align="center" th:each="el : ${prepod}">
+    <h1>Редактирование преподавателя</h1>
+    <form method="post" th:object="${prepod}">
+        <a style="margin-right: 170px">Фамилия</a>
+        <input th:field="*{surname}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="text" th:value="${prepod.getSurname()}" name="surname" placeholder="Напишите фамилию">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('surname')}" th:errors="*{surname}"></div><br>
+        <a style="margin-right: 200px">Имя</a>
+        <input th:field="*{name}" style=" width: 250px; height: 40px; margin: 2px; display: list-item" type="text" th:value="${prepod.getName()}" name="name" placeholder="Напишите имя">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+        <p>Присутствие на парах - </p>
+        <input th:field="*{checkstay}"  th:value="${prepod.getCheckstay()}" type="checkbox" name="CheckStay"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('checkstay')}" th:errors="*{checkstay}"></div><br>
+        <a style="margin-right: 80px">Отработанные часы</a>
+        <input th:field="*{hours}" style="width: 250px; height: 40px; margin: 2px; display: list-item" th:value="${prepod.getHours()}" type="number" name="Hours" placeholder="Напишите предметы">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('hours')}" th:errors="*{hours}"></div><br>
+        <a style="margin-right: 160px">Зарплата</a>
+        <input th:field="*{salary}" style="width: 250px; height: 40px; margin: 2px; display: list-item" th:value="${prepod.getSalary()}" name="Salary" type="text" placeholder="Напишите дни работы">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('salary')}" th:errors="*{salary}"></div><br>
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+    html *
+    {
+        font-family: Arial !important;
+    }
+    body {
+        height: 200px;
+        background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+    }
+    a{
+        font-size: 18px;
+    }
+    h1{
+        font-family: Arial;
+    }
+</style>
